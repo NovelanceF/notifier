@@ -1,0 +1,308 @@
+{% load staticfiles %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'notifier/style.css' %}" />
+
+<html lang="en">
+
+
+
+
+  <head>
+    <meta charset="utf-8">
+    <title>Notifier</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="static/css/bootstrap.css" rel="stylesheet">
+    <style>
+      body {
+        padding-top: 0px; /* 60px to make the container go all the way to the bottom of the topbar */
+      }
+    </style>
+    <link href="static/css/bootstrap-responsive.css" rel="stylesheet">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="../assets/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+
+
+
+
+
+  <body>
+
+
+  <style>
+      .carousel {
+          margin-bottom: 30px;
+      }
+
+      .carousel .container {
+          z-index: 9;
+      }
+
+      .carousel-control {
+          height: 80px;
+          margin-top: 0;
+          font-size: 80px;
+          text-shadow: 0 1px 1px rgba(0,0,0,.4);
+          background-color: transparent;
+          border: 0;
+          z-index: 10;
+      }
+
+      .carousel-item {
+          height: 500px;
+      }
+
+      .carousel-caption h1,
+      .carousel-caption .lead {
+          margin: 0;
+          line-height: 1.25;
+          color: #dddddd;
+          text-shadow: 0 1px 1px rgba(0,0,0,.4);
+       }
+      .carousel-caption {
+          margin-top: 20px;
+       }
+
+      .paddb {
+          padding-bottom: 100px;
+      }
+
+
+
+  </style>
+
+
+{% if ac_1 %}
+<div id="myCarousel" class="carousel slide">
+      <div class="carousel-inner">
+          <div class="item active">
+          <img src={{ ac_1.a_image.url }} id="img1">
+              <script>
+                  a = "{{ ac_1.a_image.url }}"
+                  img = document.getElementById("img1")
+                  img.src = a.split('.')[0] + "cropped." + a.split('.')[1]
+              </script>
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>{{ ac_1.a_title }}</h1><br />
+              <p class="lead">{{ ac_1.a_detail }}</p><br />
+              <a class="btn-link" type="submit" name="submit" href="/detail/?index=first">Detail</a>
+                <p class="pull-right" style="font-size: 13px; color: #cfcfcf">{{ ac_1.a_pubDate }}</p><br />
+            </div>
+          </div>
+         </div>
+          <div class="item">
+          <img src={{ ac_2.a_image.url }} id="img2">
+              <script>
+                  a = "{{ ac_2.a_image.url }}"
+                  img = document.getElementById("img2")
+                  img.src = a.split('.')[0] + "cropped." + a.split('.')[1]
+              </script>
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>{{ ac_2.a_title }}</h1><br />
+              <p class="lead">{{ ac_2.a_detail }}</p><br />
+                <a class="btn-link" type="submit" name="submit" href="/detail/?index=second">Detail</a>
+                <p class="pull-right" style="font-size: 13px; color: #cfcfcf">{{ ac_2.a_pubDate }}</p><br />
+            </div>
+          </div>
+         </div>
+          <div class="item">
+          <img src={{ ac_3.a_image.url }} id="img3">
+              <script>
+                  a = "{{ ac_3.a_image.url }}"
+                  img = document.getElementById("img3")
+                  img.src = a.split('.')[0] + "cropped." + a.split('.')[1]
+              </script>
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>{{ ac_3.a_title }}</h1><br />
+              <p class="lead">{{ ac_3.a_detail }}</p><br />
+                <a class="btn-link" type="submit" name="submit" href="/detail/?index=third">Detail</a>
+                <p class="pull-right" style="font-size: 13px; color: #cfcfcf">{{ ac_3.a_pubDate }}</p><br />
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+      <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
+    </div><!-- /.carousel -->
+
+  {% endif %}
+
+
+
+
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="#">Notifier for XDU</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="active"><a href="#">Home</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+
+  <div class="container">
+
+
+
+  <style>
+      .span4 {
+          width: 100px;
+          height: 100px;
+          background: #ffffff;
+          padding: 48px;
+      }
+  </style>
+
+  <div class="span4">
+          {% if request.user.is_authenticated %}
+        <a class="sendNF" class="btn-link" href="/sendNF/">发送通知</a><br>
+          <hr />
+        <a class="sendAC" class="btn-link" href="/sendAC/">发送公告</a>
+      {% endif %}
+        </div>
+
+
+
+  <style>
+      .span5 {
+          width: 500px;
+      }
+
+      #labelcolor {
+              width: 500px;
+              color: #999999;
+              text-decoration:none;
+              background: #f5f5f5;
+          border:5px solid #ffffff;
+          }
+          .sender {
+              font-size: 20px;
+          }
+          .date{
+              color: #aaaaaa;
+              font-size: 12px;
+          }
+      .spanx {
+          width: 400px;
+      }
+      .boarder {
+          display: inline-block;
+          height: auto;
+          max-width: 500px;
+          padding: 4px;
+          line-height: 1.4;
+      }
+
+      </style>
+
+  <div class="span5">
+  <h2>Recently Notification</h2><br />
+      {% if nf_list %}
+        {% for nf in nf_list %}
+            <div class="boarder">
+        <li><a class="sender" href="/">{{ nf.n_sender }}</a> </li>
+        <pre id="labelcolor">{{ nf.n_detail }}</pre><br />
+        <a class="pull-right date">{{ nf.n_pubDate }}</a>
+            <hr />
+            </div>
+        {% endfor %}
+
+    {% else %}
+    <ul>
+    <li><label>No recent notification</label></li>
+    </ul>
+    {% endif %}
+  </div>
+
+
+
+
+    <style>
+        .sendNF {
+            font-size: 20px;
+        }
+
+        .sendAC {
+            font-size: 20px;
+
+        }
+    </style>
+    <div class="pull-right">
+      {% if request.user.is_authenticated %}
+        <a class="pull-right" href=>User：{{request.user}}</a><br/>
+        <a class="pull-right" href="/logout/">log out</a><br/>
+      {% else %}
+        <form class="navbar-form pull-right formm" action='/login/' method='post'>
+        {% csrf_token %}
+            <style>
+                .btn {
+                    height: 27px;
+                    font-size: 12px;
+                 }
+            </style>
+         <input name='username' class="span2" type="text" placeholder="用户名"/>
+         <input name='password' class="span2" type="password" placeholder="密码" />
+         <button class="btn" type="submit">登录</button>
+        </form>
+       {% endif %}
+    </div>
+
+
+
+    </div> <!-- /container -->
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/static/js/jquery.js"></script>
+    <script src="/static/js/bootstrap-transition.js"></script>
+    <script src="/static/js/bootstrap-alert.js"></script>
+    <script src="/static/js/bootstrap-modal.js"></script>
+    <script src="/static/js/bootstrap-dropdown.js"></script>
+    <script src="/static/js/bootstrap-scrollspy.js"></script>
+    <script src="/static/js/bootstrap-tab.js"></script>
+    <script src="/static/js/bootstrap-tooltip.js"></script>
+    <script src="/static/js/bootstrap-popover.js"></script>
+    <script src="/static/js/bootstrap-button.js"></script>
+    <script src="/static/js/bootstrap-collapse.js"></script>
+    <script src="/static/js/bootstrap-carousel.js"></script>
+    <script src="/static/js/bootstrap-typeahead.js"></script>
+    <script>
+      !function ($) {
+        $(function(){
+          // carousel demo
+          $('#myCarousel').carousel()
+        })
+      }(window.jQuery)
+    </script>
+    <script src="../assets/js/holder/holder.js"></script>
+
+  </body>
+
+
+
+
+</html>
+

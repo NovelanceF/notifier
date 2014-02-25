@@ -1,0 +1,103 @@
+{% load staticfiles %}
+
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <title>Notifier</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="/static/css/bootstrap.css" rel="stylesheet">
+    <style>
+      body {
+        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+      }
+    </style>
+    <link href="/static/css/bootstrap-responsive.css" rel="stylesheet">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="../assets/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+
+
+
+      <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="#">Notifier for XDU</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="active"><a href="/">Home</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+<style>
+    .center {
+        text-align: center;
+    }
+
+</style>
+
+
+<form class="container" method="post" action="/sendNF/nf_sended">
+
+    <h1 class="pull-left">发布通知:</h1>
+    <br /><br /><br /><hr /><br />
+    {% csrf_token %}
+    <style>
+        h1 {
+            color: #898989;
+        }
+    </style>
+    <h3 >Body:</h3>
+    <textarea rows="3" class="input-large" type="text" name="n_d" value=""></textarea>
+    <br />
+    <h3 >Grade:</h3>
+    <select name="n_grade" class="input-small">
+        <option>2012</option>
+        <option>2013</option>
+        <option>2014</option>
+        <option>2015</option>
+        <option>All</option>
+    </select>
+    <br /><br />
+    <style>
+        .btnsize {
+            padding: 10px;
+            font-size: 20px;
+        }
+    </style>
+    <input class="btn-link btnsize" type="submit" name="submit" value="Submit"/>
+</form>
+
+
+
+      <script src="/static/js/jquery.js"></script>
+    <script src="/static/js/bootstrap-transition.js"></script>
+    <script src="/static/js/bootstrap-alert.js"></script>
+    <script src="/static/js/bootstrap-modal.js"></script>
+    <script src="/static/js/bootstrap-dropdown.js"></script>
+    <script src="/static/js/bootstrap-scrollspy.js"></script>
+    <script src="/static/js/bootstrap-tab.js"></script>
+    <script src="/static/js/bootstrap-tooltip.js"></script>
+    <script src="/static/js/bootstrap-popover.js"></script>
+    <script src="/static/js/bootstrap-button.js"></script>
+    <script src="/static/js/bootstrap-collapse.js"></script>
+    <script src="/static/js/bootstrap-carousel.js"></script>
+    <script src="/static/js/bootstrap-typeahead.js"></script>
+
+</html>
